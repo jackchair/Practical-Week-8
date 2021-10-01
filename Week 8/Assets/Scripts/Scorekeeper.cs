@@ -59,4 +59,8 @@ public class Scorekeeper : MonoBehaviour
     {
         score += scorePerCoin;
     }
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes

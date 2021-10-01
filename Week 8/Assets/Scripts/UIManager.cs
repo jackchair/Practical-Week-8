@@ -37,7 +37,11 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+<<<<<<< Updated upstream
         
+=======
+
+>>>>>>> Stashed changes
     }
 
     // Update is called once per frame
@@ -45,4 +49,8 @@ public class UIManager : MonoBehaviour
     {
         scoreText.text = string.Format(scoreFormat, Scorekeeper.Instance.Score);
     }
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes
