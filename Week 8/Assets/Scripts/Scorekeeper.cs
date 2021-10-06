@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Scorekeeper : MonoBehaviour
 {
+  
     static private Scorekeeper instance;
-    static public Scorekeeper Instance
+    static public Scorekeeper Instance 
     {
-        get
+        get 
         {
-            if(instance == null)
+            if (instance == null)
             {
                 Debug.LogError("There is no Scorekeeper instance in the scene.");
             }
@@ -17,46 +18,59 @@ public class Scorekeeper : MonoBehaviour
         }
     }
 
-    private int score = 0;
-    public int Score
+    private int scoreA = 0;
+    public int ScoreA 
     {
         get
         {
-            return score;
+            return scoreA;
         }
+        
     }
 
+    private int scoreB = 0;
+    public int ScoreB 
+    {
+        get
+        {
+            return scoreB;
+        }
+        
+    }
     public int scorePerCoin = 10;
 
-    private Player player;
-
+    private PlayerA playerA;
+    private PlayerB playerB;
     void Awake()
     {
-        if (instance != null)
+        if (instance != null) 
         {
-            Destroy(gameObject);
+            // destroy duplicates
+            Destroy(gameObject);            
         }
-        else
+        else 
         {
             instance = this;
-        }
+        }        
     }
 
-    // Start is called before the first frame update
     void Start()
     {
-        score = 0;
-        player = FindObjectOfType<Player>();
+        //scoreA = 0;
+        //scoreB = 0;
+        // find the player 
+        playerA = FindObjectOfType<PlayerA>();
+        playerB = FindObjectOfType<PlayerB>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void pickupCoinA()
     {
-
+        scoreA += scorePerCoin;
     }
 
-    public void pickupCoin()
+    public void pickupCoinB()
     {
-        score += scorePerCoin;
+        scoreB += scorePerCoin;
     }
+
 }

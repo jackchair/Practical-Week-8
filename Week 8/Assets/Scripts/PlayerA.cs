@@ -2,22 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PlayerA : MonoBehaviour
 {
-    public float moveSpeed=5;    
-    public static Vector3 position;        
-    private MeshRenderer sprite;       
-    private Vector3 worldPosLeftBottom;   
-    private Vector3 worldPosTopRight;      
-    public static Player instance;
-    // Start is called before the first frame update
+    public float moveSpeed = 5f;    // Start is called before the first frame update
+    public static Vector2 position;
+
     void Start()
     {
-        position=transform.position;
-        instance = this;
-        sprite = GameObject.FindGameObjectWithTag("Player").GetComponent<MeshRenderer>();
-        worldPosLeftBottom = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
-        worldPosTopRight = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
+        position=transform.position;  
     }
 
     // Update is called once per frame
@@ -56,12 +48,6 @@ public class Player : MonoBehaviour
             }           
         }
         transform.Translate(new Vector2(x,y),Space.Self);
-        LimitPosition(transform);
         position=transform.transform.position;
-    }
-    void LimitPosition(Transform transform)
-    {
-        transform.position = new Vector2(Mathf.Clamp(transform.position.x, worldPosLeftBottom.x+sprite.bounds.extents.x, worldPosTopRight.x-sprite.bounds.extents.x),
-        Mathf.Clamp(transform.position.y, worldPosLeftBottom.y+sprite.bounds.extents.y, worldPosTopRight.y-sprite.bounds.extents.y));
-    }    
+    }      
 }

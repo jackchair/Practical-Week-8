@@ -16,9 +16,16 @@ public class Coin : MonoBehaviour
         
     }
 
-    void OnTriggerEnter(Collider collider)
+    void OnTriggerEnter(Collider coll)
     {
         Destroy(gameObject);
-        Scorekeeper.Instance.pickupCoin();
+        if(coll.gameObject.tag=="PlayerA")
+        {
+            Scorekeeper.Instance.pickupCoinA();
+        }
+        else if(coll.gameObject.tag=="PlayerB")
+        {
+            Scorekeeper.Instance.pickupCoinB();
+        }
     }
 }
